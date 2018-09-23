@@ -7,6 +7,6 @@ router.get('/', (req,res)=>{
 
 router.post('/add', (req,res)=>{
     console.log(req.body);
-    res.send('received')
+    res.send('ok') 
 })
 module.exports = router;
