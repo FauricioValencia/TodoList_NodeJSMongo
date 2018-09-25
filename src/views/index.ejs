@@ -12,7 +12,7 @@
                                 <input type="text" name="title" placeholder="Insert a Title" class="form-control">
                             </div>
                             <div class="form-group">
-                                <textarea type="description" cols="80" class="form-control" placeholder="Insert description"></textarea>
+                                <textarea name="description" cols="80" class="form-control" placeholder="Insert description"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">
                                 add
@@ -35,7 +35,19 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        <% for (var i=0; i<tasks.length; i++){%>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= tasks[i].title %></td>
+                            <td><%= tasks[i].description %></td>
+                            <td>
+                                <a href="" class="btn btn-dark">Done</a>
+                                <a href="/delete/<%= tasks[i]._id %>" class="btn btn-danger">Delete</a>
+                                <a href="" class="btn btn-info">Update</a>
+                            </td>
+                            
+                        </tr>
+                            <% }%>
                     </tbody>
                 </table>
             </div>
