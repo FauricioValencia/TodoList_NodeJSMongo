@@ -39,21 +39,21 @@ router.get("/delete/:id",async(req,res)=>{
     res.redirect("/");
 
 })
-router.post("/update/:id",async(req,res)=>{
-  const task = new Task(req.body);
-  console.log(task);
-  task.update()
-  .then((res)=>{
-    console.log('exito',res);
+router.get("/update/:id",async(req,res)=>{
+
+  const {id}=req.params;
+  const task = await Task.findById(id);
+  
+  res.render('edit',{
+    task
   })
-  // const {id,title,description}=req.params;
-  // console.log(id,title,description);
-  // await Task.update({
-  //   title,
-  //   description
-  // });
-  // await task.save();
-  // res.redirect('/');
-  res.send('ok')
+})
+
+
+router.post("/update/:id",async(req,res)=>{
+
+  const {id}=req.params;
+  await Task.update({_id:id},req.body);
+  res.redirect('/');
 })
 module.exports = router;
